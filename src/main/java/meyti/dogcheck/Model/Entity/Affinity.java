@@ -2,7 +2,13 @@ package meyti.dogcheck.Model.Entity;
 
 import meyti.dogcheck.Model.Entity.Key.AffinityKey;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Affinity")
 public class Affinity {
+
     private AffinityKey affinityKey;
     private Integer playfulScoreDog;
     private Integer sportScoreDog;

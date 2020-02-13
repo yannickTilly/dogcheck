@@ -1,7 +1,11 @@
 package meyti.dogcheck.Model.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Collection;
 
+@Entity
+@Table(name = "Dog")
 public class Dog {
     private String name;
 

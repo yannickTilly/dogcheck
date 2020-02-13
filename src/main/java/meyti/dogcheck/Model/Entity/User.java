@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Collection;
 import java.util.Date;
-
+@Entity
+@Table(name = "User")
 public class User {
 
     private String name;
