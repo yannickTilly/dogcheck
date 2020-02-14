@@ -1,14 +1,14 @@
 package meyti.dogcheck.Model.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Table(name = "Dog")
 public class Dog {
+    @Id
+    private long id;
+
     private String name;
 
     private String race;

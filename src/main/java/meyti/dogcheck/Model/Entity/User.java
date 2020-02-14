@@ -1,6 +1,7 @@
 package meyti.dogcheck.Model.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Collection;
@@ -9,6 +10,7 @@ import java.util.Date;
 @Table(name = "User")
 public class User {
 
+    @Id
     private  long id;
 
     private String name;
@@ -23,7 +25,7 @@ public class User {
 
     private String statut;
 
-    @OneToMany(targetEntity = User.class, mappedBy = "master")
+    @OneToMany(targetEntity = Dog.class, mappedBy = "master")
     private Collection<Dog> dogs;
 
     private float latitude;

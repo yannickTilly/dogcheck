@@ -2,11 +2,13 @@ package meyti.dogcheck.Model.Entity.Key;
 
 import meyti.dogcheck.Model.Entity.Dog;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import java.io.Serializable;
 
-@Entity
+@Embeddable
 public class AffinityKey {
     long sender;
     long receiver;

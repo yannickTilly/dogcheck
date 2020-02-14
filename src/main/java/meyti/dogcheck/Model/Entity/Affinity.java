@@ -6,9 +6,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Affinity")
-@IdClass(AffinityKey.class)
 public class Affinity {
-    @Id
+
+    @EmbeddedId
+    private AffinityKey id;
+
+
+    @MapsId("eventID")
+    @JoinColumns({
+            @JoinColumn(name="EventID", referencedColumnName="EventID"),
+            @JoinColumn(name="SourceID", referencedColumnName="SourceID")
+    })
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private Dog sender;
