@@ -20,25 +20,28 @@ public class DogController extends meyti.dogcheck.Controller.Base.DogController 
     DogRepository dogRepository;
 
     @RequestMapping(value = "dog", method = RequestMethod.POST)
-    public Dog postDog(@RequestBody PostDog postDog)
-    {
+    public Dog postDog(@RequestBody PostDog postDog) throws UserNotFound {
         Dog dog = postDog.getDog();
+        dog.setMaster(this.getUser());
         return super.postDog(dog);
     }
 
     @RequestMapping(value = "dog/{id}", method = RequestMethod.GET)
     public Dog getDog(@PathVariable long id) throws DogNotFound {
+//        TODO: verification droit
         return super.getDog(id);
     }
 
     @RequestMapping(value = "dogs", method = RequestMethod.GET)
     public List<Dog> getDogs()
     {
+//        TODO : pagination
         return super.getDogs();
     }
 
     @RequestMapping(value = "user/{userId}/dogs", method = RequestMethod.GET)
     public List<Dog> getUserDog(@PathVariable long userId) throws UserNotFound {
+//        TODO :droit
         return super.getUserDogs(userId);
     }
 }

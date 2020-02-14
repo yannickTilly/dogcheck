@@ -1,6 +1,8 @@
 package meyti.dogcheck.Model.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Collection;
 
@@ -35,10 +37,13 @@ public class Dog {
 
     private Boolean femaleFriendly;
 
+    @OneToMany(targetEntity = Affinity.class, mappedBy = "receiver")
     private Collection<Affinity> recievedAffinities;
 
+    @OneToMany(targetEntity = Affinity.class, mappedBy = "sender")
     private Collection<Affinity> sentAffinities;
 
+    @ManyToOne(targetEntity = User.class)
     private User master;
 
     public String getName() {

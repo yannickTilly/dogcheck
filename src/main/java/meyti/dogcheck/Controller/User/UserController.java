@@ -13,15 +13,18 @@ import java.util.List;
 @RequestMapping("user")
 @RolesAllowed("ROLE_VISITOR")
 public class UserController extends meyti.dogcheck.Controller.Base.UserController {
+//    TODO: patch user
     @RequestMapping(value = "user", method = RequestMethod.GET)
     public User getUser(@RequestParam long id)
     {
+//        TODO verification droit, connecter
         return super.getUser(id);
     }
 
     @RequestMapping(value = "users", method = RequestMethod.GET)
     public List<User> getUsers()
     {
+//        TODO: pagination
         return super.getUsers();
     }
 

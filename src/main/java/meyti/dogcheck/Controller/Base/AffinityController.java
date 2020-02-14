@@ -3,10 +3,10 @@ package meyti.dogcheck.Controller.Base;
 import meyti.dogcheck.Model.Entity.Affinity;
 import meyti.dogcheck.Model.Entity.Dog;
 import meyti.dogcheck.Model.Entity.Key.AffinityKey;
-import meyti.dogcheck.Model.Exception.AffinityNotFound;
-import meyti.dogcheck.Model.Exception.DogNotFound;
+import meyti.dogcheck.Model.Exception.*;
 import meyti.dogcheck.Model.Repository.AffinityRepository;
 import meyti.dogcheck.Model.Repository.DogRepository;
+import meyti.dogcheck.Model.RequestBody.Affinity.User.PostAffinity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
@@ -21,14 +21,14 @@ public class AffinityController extends BaseController {
     AffinityRepository affinityRepository;
 
 
-    public Affinity getAffinity(AffinityKey affinityKey) throws AffinityNotFound {
+    public Affinity getAffinity(AffinityKey affinityKey) throws AffinityNotFound, UserNotFound, AccessRessourceForbidden {
         Affinity affinity = affinityRepository.findOneByKey(affinityKey);
         if (affinity == null) throw new AffinityNotFound();
         return affinity;
     }
 
-    public Affinity postAffinity(Affinity affinity)
-    {
+    public Affinity postAffinity(Affinity affinity) throws PostRessourceForbidden{
+        Dog sender = dogRepository.findOneById(affinity.getSender().getMaster().getId());
         affinityRepository.save(affinity);
         return affinity;
     }

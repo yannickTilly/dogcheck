@@ -7,28 +7,25 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 @Entity
-@IdClass(AffinityKey.class)
 public class AffinityKey {
-    @Id
-    Dog senderDog;
-    @Id
-    Dog receiverDog;
+    long sender;
+    long receiver;
 
-    public Dog getSenderDog() {
-        return senderDog;
+    public long getSender() {
+        return sender;
     }
 
-    public AffinityKey setSenderDog(Dog senderDog) {
-        this.senderDog = senderDog;
+    public AffinityKey setSender(long sender) {
+        this.sender = sender;
         return this;
     }
 
-    public Dog getReceiverDog() {
-        return receiverDog;
+    public long getReceiver() {
+        return receiver;
     }
 
-    public AffinityKey setReceiverDog(Dog receiverDog) {
-        this.receiverDog = receiverDog;
+    public AffinityKey setReceiver(long receiver) {
+        this.receiver = receiver;
         return this;
     }
 }
