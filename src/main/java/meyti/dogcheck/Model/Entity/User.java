@@ -1,7 +1,7 @@
 package meyti.dogcheck.Model.Entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

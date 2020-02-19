@@ -6,7 +6,7 @@ import meyti.dogcheck.Model.Exception.DogNotFound;
 import meyti.dogcheck.Model.Exception.UserNotFound;
 import meyti.dogcheck.Model.Repository.DogRepository;
 import meyti.dogcheck.Model.RequestBody.Dog.User.PostDog;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

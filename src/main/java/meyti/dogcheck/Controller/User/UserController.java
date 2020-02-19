@@ -3,7 +3,7 @@ package meyti.dogcheck.Controller.User;
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.User;
 import org.springframework.web.bind.annotation.*;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
 

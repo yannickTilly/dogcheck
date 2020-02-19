@@ -1,13 +1,12 @@
 package meyti.dogcheck.Controller.Auth;
 
-import LPY.appliVisiteur.Controller.BaseController.BaseController;
-import LPY.appliVisiteur.Model.Entity.User;
-import LPY.appliVisiteur.Model.Exception.UserNotFoundException;
-import LPY.appliVisiteur.Model.Repository.UserRepository;
-import LPY.appliVisiteur.Model.RequestBody.Credential;
-import LPY.appliVisiteur.Model.ResponseBody.AuthResponse;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import meyti.dogcheck.Model.Entity.User;
+import meyti.dogcheck.Model.Exception.UserNotFound;
+import meyti.dogcheck.Model.Repository.UserRepository;
+import meyti.dogcheck.Model.RequestBody.PostToken;
+import meyti.dogcheck.Model.Response.Body.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +20,8 @@ public class AuthController{
     private UserRepository userRepository;
 
     @RequestMapping(value = "/token", method = RequestMethod.POST)
-    public AuthResponse getToken(@RequestBody Credential credential) throws UserNotFoundException {
-        User user = userRepository.findByLogin(credential.getLogin());
+    public Token getToken(@RequestBody PostToken postToken) throws UserNotFound {
+        User user = userRepository.findOneByLogin(postToken.getLogin());
         if(user != null)
         {
             Algorithm algorithm = Algorithm.HMAC256("secret");
@@ -31,10 +30,10 @@ public class AuthController{
                     .withClaim("id", user.getId())
                     .withClaim("role", user.getRole())
                     .sign(algorithm);
-            AuthResponse authResponse = new AuthResponse();
-            authResponse.setToken(token);
-            return authResponse;
+            Token tokenResponse = new Token();
+            tokenResponse.setToken(token);
+            return tokenResponse;
         }
-        throw new UserNotFoundException("login non trouvé");
+        throw new UserNotFound();
     }
 }

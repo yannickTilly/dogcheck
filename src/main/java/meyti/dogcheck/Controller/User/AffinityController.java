@@ -2,10 +2,9 @@ package meyti.dogcheck.Controller.User;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.Affinity;
-import meyti.dogcheck.Model.Entity.Key.AffinityKey;
 import meyti.dogcheck.Model.Exception.*;
 import meyti.dogcheck.Model.RequestBody.Affinity.User.PostAffinity;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

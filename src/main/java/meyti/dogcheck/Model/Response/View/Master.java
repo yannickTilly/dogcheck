@@ -1,4 +1,4 @@
-package meyti.dogcheck.Model.ResponseView;
+package meyti.dogcheck.Model.Response.View;
 
 public class Master {
     public static class Dog {}

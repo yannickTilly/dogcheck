@@ -2,7 +2,7 @@ package meyti.dogcheck.Model.Entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.Key.AffinityKey;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 
 import javax.persistence.*;
 import java.io.Serializable;

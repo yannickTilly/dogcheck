@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import meyti.dogcheck.Model.ResponseView.Master;
+import meyti.dogcheck.Model.Response.View.Master;
 
 @Entity
 @Table(name = "Dog")
