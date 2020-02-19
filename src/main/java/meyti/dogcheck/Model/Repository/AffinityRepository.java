@@ -5,5 +5,5 @@ import meyti.dogcheck.Model.Entity.Key.AffinityKey;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AffinityRepository extends CrudRepository<Affinity, AffinityKey> {
-    Affinity findOneByKey(AffinityKey affinityKey);
+    Affinity findOneBySenderIdAndReceiverId(long senderId, long receiverId);
 }

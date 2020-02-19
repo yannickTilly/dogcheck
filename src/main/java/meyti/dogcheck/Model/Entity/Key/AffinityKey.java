@@ -8,8 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import java.io.Serializable;
 
-@Embeddable
-public class AffinityKey {
+public class AffinityKey  implements Serializable{
     long sender;
     long receiver;
 

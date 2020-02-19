@@ -1,32 +1,35 @@
 package meyti.dogcheck.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.Key.AffinityKey;
+import meyti.dogcheck.Model.ResponseView.Master;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Affinity")
-public class Affinity {
-
-    @EmbeddedId
-    private AffinityKey id;
-
-
-    @MapsId("eventID")
-    @JoinColumns({
-            @JoinColumn(name="EventID", referencedColumnName="EventID"),
-            @JoinColumn(name="SourceID", referencedColumnName="SourceID")
-    })
+@IdClass(AffinityKey.class)
+public class Affinity implements Serializable {
+    @Id
+    @JsonView(Master.Affinity.class)
+    @JoinColumn(name="senderId", referencedColumnName="id")
     @ManyToOne
-    @JoinColumn(name = "sender_id")
-    private Dog sender;
+    public Dog sender;
 
     @Id
+
+    @JsonView(Master.Affinity.class)
+    @JoinColumn(name="receiverId", referencedColumnName="id")
     @ManyToOne
-    @JoinColumn(name = "receiver_id")
     private Dog receiver;
 
+
+    @JsonView(Master.Affinity.class)
     private Integer playfulScoreDog;
+
+
+    @JsonView(Master.Affinity.class)
     private Integer sportScoreDog;
 
     public Dog getSender() {

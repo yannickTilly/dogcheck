@@ -1,5 +1,8 @@
 package meyti.dogcheck.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import meyti.dogcheck.Model.ResponseView.Master;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -11,22 +14,34 @@ import java.util.Date;
 public class User {
 
     @Id
+    @JsonView({Master.Dog.class, Master.User.class})
     private  long id;
 
+    @JsonView({Master.Dog.class, Master.User.class})
     private String name;
 
     // photo
 
+    @JsonView({Master.Dog.class, Master.User.class})
     private String mailMessenger;
 
+
+    @JsonView({Master.User.class, Master.Dog.class})
     private String phoneNumber;
 
+    @JsonView(Master.User.class)
     private String instagramLink;
 
+    @JsonView({Master.Dog.class, Master.User.class})
     private String statut;
 
     @OneToMany(targetEntity = Dog.class, mappedBy = "master")
+    @JsonView(Master.User.class)
     private Collection<Dog> dogs;
+
+    private String login;
+
+    private String password;
 
     private float latitude;
 
@@ -34,12 +49,41 @@ public class User {
 
     private Date localisationDate;
 
+    private String role;
+
     public long getId() {
         return id;
     }
 
     public User setId(long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public User setRole(String role) {
+        this.role = role;
+        return this;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public User setLogin(String login) {
+        this.login = login;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
         return this;
     }
 

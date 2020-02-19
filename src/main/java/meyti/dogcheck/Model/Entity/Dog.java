@@ -3,38 +3,58 @@ package meyti.dogcheck.Model.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import meyti.dogcheck.Model.ResponseView.Master;
+
 @Entity
 @Table(name = "Dog")
 public class Dog {
+
     @Id
+    @Column(name = "ID")
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private long id;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private String name;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private String race;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private String sex;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private Integer age;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private String size;
 
+    @JsonView({Master.Dog.class, Master.User.class, Master.Affinity.class})
     private Boolean sterilised;
 
+    @JsonView(Master.Dog.class)
     private Boolean maleSterilisedFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean femaleSterilisedFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean smallDogFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean mediumDogFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean largeDogFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean extraLargeDogFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean maleFriendly;
 
+    @JsonView(Master.Dog.class)
     private Boolean femaleFriendly;
 
     @OneToMany(targetEntity = Affinity.class, mappedBy = "receiver")
@@ -44,6 +64,7 @@ public class Dog {
     private Collection<Affinity> sentAffinities;
 
     @ManyToOne(targetEntity = User.class)
+    @JsonView({Master.Dog.class, Master.Affinity.class})
     private User master;
 
     public String getName() {

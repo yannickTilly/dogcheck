@@ -15,20 +15,19 @@ import java.util.List;
 public class AffinityController extends BaseController {
 
     @Autowired
-    DogRepository dogRepository;
+    protected DogRepository dogRepository;
 
     @Autowired
-    AffinityRepository affinityRepository;
+    protected AffinityRepository affinityRepository;
 
 
-    public Affinity getAffinity(AffinityKey affinityKey) throws AffinityNotFound, UserNotFound, AccessRessourceForbidden {
-        Affinity affinity = affinityRepository.findOneByKey(affinityKey);
+    public Affinity getAffinity(long senderId, long receiverId) throws AffinityNotFound, UserNotFound, AccessRessourceForbidden {
+        Affinity affinity = affinityRepository.findOneBySenderIdAndReceiverId(senderId, receiverId);
         if (affinity == null) throw new AffinityNotFound();
         return affinity;
     }
 
-    public Affinity postAffinity(Affinity affinity) throws PostRessourceForbidden{
-        Dog sender = dogRepository.findOneById(affinity.getSender().getMaster().getId());
+    public Affinity postAffinity(Affinity affinity){
         affinityRepository.save(affinity);
         return affinity;
     }
