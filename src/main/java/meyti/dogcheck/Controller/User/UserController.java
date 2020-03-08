@@ -2,14 +2,17 @@ package meyti.dogcheck.Controller.User;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.User;
+import org.hibernate.mapping.Array;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import meyti.dogcheck.Model.Response.View.Master;
 import javax.annotation.security.RolesAllowed;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("user")
-@RolesAllowed("ROLE_VISITOR")
+@Secured("ROLE_USER")
 public class UserController extends meyti.dogcheck.Controller.Base.UserController {
 //    TODO: patch user
     @JsonView(Master.User.class)
@@ -22,9 +25,14 @@ public class UserController extends meyti.dogcheck.Controller.Base.UserControlle
 
     @RequestMapping(value = "users", method = RequestMethod.GET)
     @JsonView(Master.User.class)
-    public List<User> getUsers()
+    public List<User> getUsers(@RequestParam String name)
     {
-//        TODO: pagination
+        if (name != null)
+        {
+            List<User> users= (List<User>) userRepository.findByNameContainingIgnoreCase(name);
+            if (users == null) return  new ArrayList<>();
+            else return users;
+        }
         return super.getUsers();
     }
 

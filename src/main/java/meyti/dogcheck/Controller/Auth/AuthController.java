@@ -24,6 +24,7 @@ public class AuthController{
         User user = userRepository.findOneByLogin(postToken.getLogin());
         if(user != null)
         {
+
             Algorithm algorithm = Algorithm.HMAC256("secret");
             String token = JWT.create()
                     .withIssuer("auth0")

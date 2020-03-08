@@ -2,6 +2,7 @@ package meyti.dogcheck.Controller.User;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Entity.Dog;
+import meyti.dogcheck.Model.Entity.User;
 import meyti.dogcheck.Model.Exception.DogNotFound;
 import meyti.dogcheck.Model.Exception.UserNotFound;
 import meyti.dogcheck.Model.Repository.DogRepository;
@@ -10,6 +11,7 @@ import meyti.dogcheck.Model.Response.View.Master;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("user")
@@ -36,9 +38,14 @@ public class DogController extends meyti.dogcheck.Controller.Base.DogController 
 
     @RequestMapping(value = "dogs", method = RequestMethod.GET)
     @JsonView(Master.Dog.class)
-    public List<Dog> getDogs()
+    public List<Dog> getDogs(@RequestParam String name)
     {
-//        TODO : pagination
+        if (name != null)
+        {
+            List<Dog> dogs= (List<Dog>) dogRepository.findByNameContainingIgnoreCase(name);
+            if (dogs == null) return  new ArrayList<>();
+            else return dogs;
+        }
         return super.getDogs();
     }
 
