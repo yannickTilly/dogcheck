@@ -3,10 +3,7 @@ package meyti.dogcheck.Model.Entity;
 import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Response.View.Master;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 @Entity
@@ -39,6 +36,18 @@ public class User {
     @JsonView(Master.User.class)
     private Collection<Dog> dogs;
 
+    @ManyToMany(targetEntity = Event.class, mappedBy = "participants")
+    private Collection<Event> participateEvents;
+
+    @OneToMany(targetEntity = Event.class, mappedBy = "creator")
+    private Collection<Event> createdEvents;
+
+    @OneToMany(targetEntity = Information.class, mappedBy = "creator")
+    private Collection<Information> createdInformations;
+
+    @OneToMany(targetEntity = Walk.class, mappedBy = "walker")
+    private Collection<Walk> createdWalks;
+
     private String login;
 
     private String password;
@@ -50,6 +59,42 @@ public class User {
     private Date localisationDate;
 
     private String role;
+
+    public Collection<Event> getParticipateEvents() {
+        return participateEvents;
+    }
+
+    public User setParticipateEvents(Collection<Event> participateEvents) {
+        this.participateEvents = participateEvents;
+        return this;
+    }
+
+    public Collection<Event> getCreatedEvents() {
+        return createdEvents;
+    }
+
+    public User setCreatedEvents(Collection<Event> createdEvents) {
+        this.createdEvents = createdEvents;
+        return this;
+    }
+
+    public Collection<Information> getCreatedInformations() {
+        return createdInformations;
+    }
+
+    public User setCreatedInformations(Collection<Information> createdInformations) {
+        this.createdInformations = createdInformations;
+        return this;
+    }
+
+    public Collection<Walk> getCreatedWalks() {
+        return createdWalks;
+    }
+
+    public User setCreatedWalks(Collection<Walk> createdWalks) {
+        this.createdWalks = createdWalks;
+        return this;
+    }
 
     public long getId() {
         return id;

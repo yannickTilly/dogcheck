@@ -38,7 +38,7 @@ public class DogController extends meyti.dogcheck.Controller.Base.DogController 
 
     @RequestMapping(value = "dogs", method = RequestMethod.GET)
     @JsonView(Master.Dog.class)
-    public List<Dog> getDogs(@RequestParam String name)
+    public List<Dog> getDogs(@RequestParam(required = false) String name)
     {
         if (name != null)
         {
