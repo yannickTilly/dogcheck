@@ -1,17 +1,15 @@
 package meyti.dogcheck.Controller.User;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import meyti.dogcheck.Model.Entity.Dog;
 import meyti.dogcheck.Model.Entity.Event;
 import meyti.dogcheck.Model.Exception.DogNotFound;
 import meyti.dogcheck.Model.Exception.UserNotFound;
 import meyti.dogcheck.Model.Repository.EventRepository;
-import meyti.dogcheck.Model.RequestBody.Event.user.PostEvent;
+import meyti.dogcheck.Model.RequestBody.Event.User.PostEvent;
 import meyti.dogcheck.Model.Response.View.Master;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("user")

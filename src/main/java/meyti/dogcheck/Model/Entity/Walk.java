@@ -4,27 +4,47 @@ import com.fasterxml.jackson.annotation.JsonView;
 import meyti.dogcheck.Model.Response.View.Master;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "Walk")
 public class Walk {
     @Id
     @Column(name = "ID")
-    @JsonView({})
+    @JsonView({Master.Walk.class})
     private long id;
 
+    @JsonView({Master.Walk.class})
     private String title;
 
+    @JsonView({Master.Walk.class})
     private String description;
 
+    @JsonView({Master.Walk.class})
     private float latitude;
 
+    @JsonView({Master.Walk.class})
     private float longitude;
 
+    @JsonView({Master.Walk.class})
     private boolean isPublic;
 
     @ManyToOne(targetEntity = User.class)
-    public User walker;
+    @JsonView({Master.Walk.class})
+    private User walker;
+
+    @OneToMany(targetEntity = WalkPoint.class, mappedBy = "walk")
+    @JsonView({Master.Walk.class})
+    private Collection<WalkPoint> walkPoints;
+
+    public Collection<WalkPoint> getWalkPoints() {
+        return walkPoints;
+    }
+
+    public Walk setWalkPoints(Collection<WalkPoint> walkPoints) {
+        this.walkPoints = walkPoints;
+        return this;
+    }
 
     public long getId() {
         return id;

@@ -10,17 +10,46 @@ import javax.persistence.*;
 public class Information {
     @Id
     @Column(name = "ID")
-    @JsonView({})
+    @JsonView({Master.Information.class})
     private long id;
 
+    @JsonView({Master.Information.class})
     private String level;
 
+    @JsonView({Master.Information.class})
     private String title;
 
+    @JsonView({Master.Information.class})
     private String description;
 
+    @JsonView({Master.Information.class})
+    private float latitude;
+
+    @JsonView({Master.Information.class})
+    private float longitude;
+
+    @JsonView({Master.Information.class})
     @ManyToOne(targetEntity = User.class)
     private User creator;
+
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public Information setLatitude(float latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public Information setLongitude(float longitude) {
+        this.longitude = longitude;
+        return this;
+    }
 
     public long getId() {
         return id;

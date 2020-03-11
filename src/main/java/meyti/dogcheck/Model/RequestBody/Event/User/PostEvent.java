@@ -1,12 +1,9 @@
-package meyti.dogcheck.Model.RequestBody.Event.user;
+package meyti.dogcheck.Model.RequestBody.Event.User;
 
 import meyti.dogcheck.Model.Entity.Event;
 import meyti.dogcheck.Model.Entity.User;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import java.time.LocalDate;
-import java.util.Collection;
 
 public class PostEvent {
     private LocalDate startDate;

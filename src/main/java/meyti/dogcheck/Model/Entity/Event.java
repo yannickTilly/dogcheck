@@ -21,15 +21,44 @@ public class Event {
     @ManyToMany(targetEntity = User.class)
     private Collection<User> participants;
 
+    @JsonView(Master.Event.class)
     private LocalDate startDate;
 
+    @JsonView(Master.Event.class)
     private LocalDate endDate;
 
+    @JsonView(Master.Event.class)
     private float longitute;
 
+    @JsonView(Master.Event.class)
     private float latitude;
 
+    @JsonView(Master.Event.class)
     private String description;
+
+    @JsonView(Master.Event.class)
+    private String title;
+
+    @JsonView(Master.Event.class)
+    private String activity;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Event setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public Event setActivity(String activity) {
+        this.activity = activity;
+        return this;
+    }
 
     public long getId() {
         return id;

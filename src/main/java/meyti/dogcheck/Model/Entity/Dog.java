@@ -67,6 +67,54 @@ public class Dog {
     @JsonView({Master.Dog.class, Master.Affinity.class})
     private User master;
 
+    @JsonView(Master.Dog.class)
+    @OneToMany(targetEntity = HeightPoint.class, mappedBy = "dog")
+    private Collection<HeightPoint> heightPoints;
+
+    @JsonView(Master.Dog.class)
+    @OneToMany(targetEntity = WeightPoint.class, mappedBy = "dog")
+    private Collection<WeightPoint> weightPoints;
+
+    @OneToMany(targetEntity = Vaccination.class, mappedBy = "dog")
+    @JsonView({Master.Dog.class})
+    private Collection<Vaccination> vaccinations;
+
+    public Collection<Vaccination> getVaccinations() {
+        return vaccinations;
+    }
+
+    public Dog setVaccinations(Collection<Vaccination> vaccinations) {
+        this.vaccinations = vaccinations;
+        return this;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Dog setId(long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Collection<HeightPoint> getHeightPoints() {
+        return heightPoints;
+    }
+
+    public Dog setHeightPoints(Collection<HeightPoint> heightPoints) {
+        this.heightPoints = heightPoints;
+        return this;
+    }
+
+    public Collection<WeightPoint> getWeightPoints() {
+        return weightPoints;
+    }
+
+    public Dog setWeightPoints(Collection<WeightPoint> weightPoints) {
+        this.weightPoints = weightPoints;
+        return this;
+    }
+
     public String getName() {
         return name;
     }

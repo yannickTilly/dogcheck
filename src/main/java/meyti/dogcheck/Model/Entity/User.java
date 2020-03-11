@@ -52,9 +52,11 @@ public class User {
 
     private String password;
 
-    private float latitude;
+    @JsonView(Master.User.class)
+    private Float latitude;
 
-    private float longitude;
+    @JsonView(Master.User.class)
+    private Float longitude;
 
     private Date localisationDate;
 
@@ -141,20 +143,20 @@ public class User {
         return this;
     }
 
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public User setLatitude(float latitude) {
+    public User setLatitude(Float latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 
-    public User setLongitude(float longitude) {
+    public User setLongitude(Float longitude) {
         this.longitude = longitude;
         return this;
     }
