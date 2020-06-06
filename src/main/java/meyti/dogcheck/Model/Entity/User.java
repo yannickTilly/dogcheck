@@ -42,8 +42,8 @@ public class User {
     @OneToMany(targetEntity = Event.class, mappedBy = "creator")
     private Collection<Event> createdEvents;
 
-    @OneToMany(targetEntity = Information.class, mappedBy = "creator")
-    private Collection<Information> createdInformations;
+    @OneToMany(targetEntity = Report.class, mappedBy = "creator")
+    private Collection<Report> createdReports;
 
     @OneToMany(targetEntity = Walk.class, mappedBy = "walker")
     private Collection<Walk> createdWalks;
@@ -80,12 +80,12 @@ public class User {
         return this;
     }
 
-    public Collection<Information> getCreatedInformations() {
-        return createdInformations;
+    public Collection<Report> getCreatedReports() {
+        return createdReports;
     }
 
-    public User setCreatedInformations(Collection<Information> createdInformations) {
-        this.createdInformations = createdInformations;
+    public User setCreatedReports(Collection<Report> createdReports) {
+        this.createdReports = createdReports;
         return this;
     }
 

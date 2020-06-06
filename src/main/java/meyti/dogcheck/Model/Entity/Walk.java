@@ -11,8 +11,9 @@ import java.util.Collection;
 public class Walk {
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @JsonView({Master.Walk.class})
-    private long id;
+    private Long id;
 
     @JsonView({Master.Walk.class})
     private String title;
@@ -46,11 +47,11 @@ public class Walk {
         return this;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public Walk setId(long id) {
+    public Walk setId(Long id) {
         this.id = id;
         return this;
     }

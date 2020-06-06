@@ -6,7 +6,7 @@ public class Master {
     public static class User {}
     public static class Event {}
     public static class Walk {}
-    public static class Information {}
+    public static class Report {}
     public static class WalkPoint {}
     public static class WeightPoint {}
     public static class HeightPoint {}

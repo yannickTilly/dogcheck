@@ -12,7 +12,7 @@ public class WeightPoint {
 
     @Id
     @Column(name = "ID")
-    @JsonView({Master.Information.class, Master.Dog.class})
+    @JsonView({Master.Report.class, Master.Dog.class})
     private long id;
 
     @JsonView(Master.Dog.class)

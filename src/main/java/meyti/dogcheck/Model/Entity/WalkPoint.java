@@ -12,8 +12,9 @@ public class WalkPoint {
 
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @JsonView({Master.WalkPoint.class})
-    private long id;
+    private Long id;
 
     @JsonView({Master.WalkPoint.class, Master.Walk.class})
     private float latitude;
@@ -27,11 +28,11 @@ public class WalkPoint {
     @ManyToOne(targetEntity = Walk.class)
     private Walk walk;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public WalkPoint setId(long id) {
+    public WalkPoint setId(Long id) {
         this.id = id;
         return this;
     }

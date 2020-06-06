@@ -13,7 +13,7 @@ public class HeightPoint {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @JsonView({Master.Information.class, Master.Dog.class})
+    @JsonView({Master.Report.class, Master.Dog.class})
     private Long id;
 
     @JsonView(Master.Dog.class)
